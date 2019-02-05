@@ -145,6 +145,7 @@ echo "installation minimum pour prtg"
 apt install -y netcat
 
 ##preinstallation de prtg miniprobe
+apt install -y python-setuptools
 cd /opt
 git clone https://github.com/ianbogda/PythonMiniProbe.git
 cd PythonMiniProbe
