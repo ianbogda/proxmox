@@ -137,8 +137,8 @@ echo "Mettre en supervision ce nouveau serveur Proxmox :" | mail -s "Nouveau Ser
 sed -i.back '/Proxmox.Utils.checked_command(function() {});/ s/^/\/\//' /usr/share/pve-manager/js/pvemanagerlib.js
 
 ##modification du bashrc pour notification de connexion ssh avec l'history
-echo -e "echo 'Avertissement! Connexion au serveur :' \`hostname\` 'par:' \`who | grep -v localhost\` | mail -s \"[ \`hostname\` ] Avertissement!!! connexion au serveur le: \`date +'%Y/%m/%d'\`  \`who | grep -v localhost | awk {'print $5'}\`$adminmail" >> /etc/bash.bashrc
-echo -e "PROMPT_COMMAND='history -a >(logger -t \"\$USER[\$PWD] \$SSH_CONNECTION\")'\"" >> /etc/bash.bashrc
+echo -e "echo 'Avertissement! Connexion au serveur :' \`hostname\` 'par:' \`who | grep -v localhost\` | mail -s \"[ \`hostname\` ] Avertissement!!! connexion au serveur le: \`date +'%Y/%m/%d'\`  \`who | grep -v localhost | awk {'print $5'}\`\" $adminmail -a \"From: `hostname`@$domainsmtp\"" >> /etc/bash.bashrc
+echo -e "PROMPT_COMMAND='history -a >(logger -t \"\$USER[\$PWD] \$SSH_CONNECTION\")'" >> /etc/bash.bashrc
 
 ##installation netcat
 echo "installation minimum pour prtg"
